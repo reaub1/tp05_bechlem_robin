@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, VERSION } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { PanierState } from '../shared/states/panier-state';
 
 @Component({
-  selector: 'app-root',
+  selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'tp05_bechlem_robin';
+  name = 'Angular ' + VERSION.major;
+
+  @Select(PanierState.getNbProduits) nb$: Observable<number> | undefined;
+
+  constructor() {}
 }
